@@ -12,8 +12,6 @@ body {
 }
 
 .bg-img {
-  height: 100vh;
-  width: 100vw;
   z-index: -1;
   position: absolute;
   object-fit: cover;
@@ -44,6 +42,8 @@ h5,
 h6 {
   overflow-wrap: break-word;
   color: $yellow;
+  margin: 0;
+  padding: 0;
 }
 
 #root,
