@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+
 import Murcielagos from '@/public/img/murcielagos.svg';
 import Calabaza from '@/public/img/calabaza-smile.svg';
 import ParticipaButton from '@/components/ParticipaPutton';

@@ -1,5 +1,8 @@
 'use client';
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 import { fetchFunction } from '../../utils/fetchFunction';
 import { insertDataToForm, checkFormIsCompleteAndCorrect } from '../../utils/dataUtils';
 
@@ -9,7 +12,6 @@ import TextInput from '../../components/TextInput';
 import FileUpload from '../../components/FileUpload';
 import Alert from '../../components/Alert';
 import PhotoNotice from '../../components/PhotoNotice';
-import { useRouter } from 'next/navigation';
 
 const Form = () => {
   const router = useRouter();
