@@ -4,7 +4,8 @@ import Image from 'next/image';
 import fondo from '@/public/img/fondo-halloween.svg';
 
 const myFont = localFont({
-  src: '../public/fonts/Grinched/GrinchedRegular.ttf'
+  src: '../public/fonts/Grinched/GrinchedRegular.ttf',
+  display: 'swap'
 });
 
 export const metadata = {
