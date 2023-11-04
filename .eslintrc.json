@@ -3,7 +3,6 @@
   "rules": {
     "semi": "off",
     "react/react-in-jsx-scope": "off",
-    "space-before-function-paren": ["error", "always"],
     "jsx-quotes": ["error", "prefer-single"],
     "react/prop-types": "off",
     "comma-dangle": ["error", "never"]

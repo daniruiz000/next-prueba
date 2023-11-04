@@ -1,0 +1,21 @@
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Definición de la fuente de datos
+datasource db {
+  provider = "mysql"
+  url      = env.local("DATABASE_URL")
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  nombre         String
+  apellido       String
+  segundo_apellido String
+  telefono       String? @unique
+  email          String  @unique
+  foto           Bytes?
+}

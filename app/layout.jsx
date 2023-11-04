@@ -16,7 +16,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang='es'>
-      <body className={`${styles.backgroundImage} ${myFont.className}`}>
+      <body className={`${styles} ${myFont.className}`}>
         <Image className='bg-img' alt='fondo' src={fondo} priority fill />
         {children}
       </body>
