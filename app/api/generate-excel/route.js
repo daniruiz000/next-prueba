@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { promotionDto } from '@/app/api/dto/promotion.dto';
 import { excelDto } from '@/app/api/dto/excel.dto';
 

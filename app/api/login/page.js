@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/login/do-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
