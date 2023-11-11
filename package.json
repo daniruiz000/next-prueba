@@ -6,17 +6,11 @@
     "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
-    "lint": "next lint",
-    "migrate": "dotenv -e .env.local -- npx prisma migrate dev"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.5.2",
     "dotenv": "^16.3.1",
-    "exceljs": "^4.4.0",
-    "luxon": "^3.4.3",
     "next": "14.0.0",
-    "nodemailer": "^6.9.7",
-    "prisma": "^5.5.2",
     "react": "^18",
     "react-dom": "^18",
     "reflect-metadata": "^0.1.13",

@@ -37,15 +37,20 @@ export const insertDataToForm = (validatedData) => {
 export const addUserToDataBaseAndNavigateToCorrectPage = async (formData, router, showAlert) => {
   const API_URL = process.env.NEXT_API_URL;
 
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    body: formData
-  });
-  console.log({ response });
-  if (response.ok) {
-    router.push('/correct');
-  } else {
-    console.log({ response });
-    showAlert({ type: 'alert', message: response.statusText });
+  try {
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      navigate('/correct');
+    } else {
+      const errorText = await response.text();
+      const errorTextParsed = errorText.replace('"error":"', '').replace('"', '');
+      showAlert({ type: 'alert', message: errorTextParsed });
+    }
+  } catch (error) {
+    showAlert({ type: 'alert', message: 'Error en la comunicación con el Servidor. Por favor, inténtelo de nuevo más tarde.' });
   }
 };
