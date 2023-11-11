@@ -44,7 +44,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         // Obtén el nombre del archivo del encabezado Content-Disposition
         const contentDisposition = response.headers.get('Content-Disposition');
-        const filenameMatch = contentDisposition && contentDisposition.match(/filename="(.+)"/);
+        const filenameMatch = contentDisposition && RegExp(/filename="(.+)"/).exec(contentDisposition);
 
         if (filenameMatch && filenameMatch[1]) {
           const filename = filenameMatch[1];

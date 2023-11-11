@@ -1,6 +1,5 @@
 import ExcelJS from 'exceljs';
 import { DateTime } from 'luxon';
-import { NextResponse } from 'next/server';
 import { userDto } from './user.dto';
 
 const promotion = process.env.PROMOCION_NAME;

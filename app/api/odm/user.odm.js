@@ -28,6 +28,33 @@ const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
+const validateDNI = (dni) => {
+  if (!User.dniRegex.test(dni.toUpperCase())) {
+    return false;
+  }
+
+  const dniNumber = parseInt(dni.substring(0, 8), 10);
+  const letterIndex = dniNumber % 23;
+  const calculatedLetter = User.authLetters.charAt(letterIndex);
+  const providedLetter = dni.charAt(8).toUpperCase();
+
+  return calculatedLetter !== providedLetter;
+};
+
+const validateNIE = (nie) => {
+  if (!User.nieRegex.test(nie.toUpperCase())) {
+    return false;
+  }
+
+  const nieLetter = nie.charAt(0).toUpperCase();
+  const nieNumber = parseInt(nie.substring(1, 8), 10);
+  const letterIndex = (User.nieMap[nieLetter] * 7 + nieNumber) % 23;
+  const calculatedLetter = User.authLetters.charAt(letterIndex);
+  const providedLetter = nie.charAt(8);
+
+  return calculatedLetter !== providedLetter;
+};
+
 const countUsers = async () => {
   const userCount = await prisma.user.count();
   return userCount;
@@ -46,6 +73,8 @@ const saveUser = async (userDataInsert, foto) => {
       segundo_apellido: userDataInsert.segundo_apellido,
       telefono: userDataInsert.telefono,
       email: userDataInsert.email,
+      dni: userDataInsert.dni,
+      nie: userDataInsert.nie,
       foto: foto
     }
   });
@@ -57,9 +86,7 @@ const verifyValidProperties = (userDataInsert) => {
   const invalidProperties = Object.keys(userDataInsert).filter((property) => !validUserPropertiesUser.includes(property));
   const isInvalidProperties = invalidProperties.length > 0;
 
-  if (isInvalidProperties) {
-    throw new Error(`Actualización de usuario cancelada. Propiedades no válidas: ${invalidProperties.join(', ')}`);
-  }
+  return !isInvalidProperties;
 };
 
 export const userOdm = {
@@ -68,6 +95,8 @@ export const userOdm = {
   validateSegundoApellido,
   validatePhoneNumber,
   validateEmail,
+  validateDNI,
+  validateNIE,
   verifyValidProperties,
   countUsers,
   getAllUser,

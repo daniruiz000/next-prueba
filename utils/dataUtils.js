@@ -1,49 +1,104 @@
-export const insertDataToForm = (data) => {
-  const formData = new FormData();
-
-  formData.append('nombre', data.nombre);
-  formData.append('apellido', data.apellido);
-  formData.append('segundo_apellido', data.segundo_apellido);
-  formData.append('email', data.email);
-  formData.append('telefono', data.telefono);
-
-  if (data.foto) {
-    formData.append('foto', data.foto);
-  }
-  return formData;
+const isValidateName = (name) => {
+  const nameRegex = /^[A-Za-zÁ-ÿ\s]{3,19}$/;
+  return nameRegex.test(name);
 };
 
-export const checkFormIsCompleteAndCorrect = (data, showAlert) => {
-  const isNameCorrect = /^[A-Za-zÁ-ÿ\s]{3,19}$/.test(data.nombre.trim());
-  const isLastNameCorrect = /^[A-Za-zÁ-ÿ\s]{3,19}$/.test(data.apellido.trim());
-  const isSecondLastNameCorrect = /^[A-Za-zÁ-ÿ\s]{3,19}$/.test(data.segundo_apellido.trim());
-  const isPhoneCorrect = /^(34|\+34|0034)?[6789]\d{8}$/.test(data.telefono);
-  const isMailCorrect = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email);
+const isValidateNombre = (nombre) => {
+  return isValidateName(nombre);
+};
 
-  if (data.nombre.trim() === '' || !isNameCorrect) {
-    showAlert('Los datos introducidos en el campo "nombre" no son validos');
+const isValidateApellido = (apellido) => {
+  return isValidateName(apellido);
+};
+
+const isValidateSegundoApellido = (segundo_apellido) => {
+  return isValidateName(segundo_apellido);
+};
+
+const isValidatePhoneNumber = (telefono) => {
+  const phoneRegex = /^(34|\+34|0034)?[6789]\d{8}$/;
+
+  return phoneRegex.test(telefono);
+};
+
+const isValidateEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  return emailRegex.test(email);
+};
+
+const isValidateDNI = (dni) => {
+  const dniRegex = /^\d{8}[A-Za-z]$/i;
+  const authLetters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+  if (!dniRegex.test(dni.toUpperCase())) {
     return false;
   }
 
-  if (data.apellido.trim() === '' || !isLastNameCorrect) {
-    showAlert('Los datos introducidos en el campo "apellido" no son validos');
+  const letterIndex = parseInt(dni, 10) % 23;
+  const validLetter = authLetters.charAt(letterIndex).toUpperCase();
+
+  return validLetter === dni.charAt(8).toUpperCase();
+};
+
+const isValidateNIE = (nie) => {
+  const nieRegex = /^[XYZ]\d{7}[A-Za-z]$/i;
+  const authLetters = 'TRWAGMYFPDXBNJZSQVHLCKE';
+  const nieMap = { X: 0, Y: 1, Z: 2 };
+
+  if (!nieRegex.test(nie.toUpperCase())) {
     return false;
   }
 
-  if (data.segundo_apellido.trim() === '' || !isSecondLastNameCorrect) {
-    showAlert('Los datos introducidos en el campo "segundo apellido" no son validos');
+  const letterIndex = (nieMap[nie.charAt(0).toUpperCase()] * 7 + parseInt(nie.substring(1, 8), 10)) % 23;
+  const validLetter = authLetters.charAt(letterIndex).toUpperCase();
+  return validLetter === nie.charAt(8).toUpperCase();
+};
+
+export const checkDataInsertIsCompleteAndCorrect = (data, setShowNotice) => {
+  const validatedData = {};
+
+  if (!isValidateNombre(data.nombre)) {
+    setShowNotice({ type: 'alert', message: 'Los datos introducidos en el campo "nombre" no son válidos' });
     return false;
   }
 
-  if (data.telefono.trim() === '' || !isPhoneCorrect) {
-    showAlert('Los datos introducidos en el campo "telefono" no son validos');
+  if (!isValidateApellido(data.apellido)) {
+    setShowNotice({ type: 'alert', message: 'Los datos introducidos en el campo "apellido" no son válidos' });
     return false;
   }
 
-  if (data.email.trim() === '' || !isMailCorrect) {
-    showAlert('Los datos introducidos en el campo "email" no son validos');
+  if (!isValidateSegundoApellido(data.segundo_apellido)) {
+    setShowNotice({ type: 'alert', message: 'Los datos introducidos en el campo "segundo apellido" no son válidos' });
     return false;
   }
 
-  return true;
+  if (!isValidatePhoneNumber(data.telefono)) {
+    setShowNotice({ type: 'alert', message: 'Los datos introducidos en el campo "telefono" no son válidos' });
+    return false;
+  }
+
+  if (!isValidateEmail(data.email)) {
+    setShowNotice({ type: 'alert', message: 'Los datos introducidos en el campo "email" no son válidos' });
+    return false;
+  }
+
+  if (data.idType === 'dni') {
+    const isValidDni = isValidateDNI(data.idNumber);
+    if (!isValidDni) {
+      setShowNotice({ type: 'alert', message: 'El DNI introducido no es válido.' });
+      return false;
+    }
+  }
+
+  if (data.idType === 'nie') {
+    if (!isValidateNIE(data.idNumber)) {
+      setShowNotice({ type: 'alert', message: 'El NIE introducido no es válido.' });
+      return false;
+    }
+  }
+
+  Object.assign(validatedData, data);
+
+  return validatedData;
 };

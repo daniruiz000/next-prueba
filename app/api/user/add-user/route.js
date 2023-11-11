@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server';
 import { userDto } from '@/app/api/dto/user.dto';
 import { promotionDto } from '@/app/api/dto/promotion.dto';
 
@@ -15,11 +14,9 @@ export async function POST(req) {
 
   const userDataInsert = Object.fromEntries(formData);
 
-  userDto.veryfyUserDataInsert(userDataInsert);
+  await userDto.veryfyUserDataInsert(userDataInsert);
   await promotionDto.verifyIsPromotionActive();
 
-  await userDto.createNewUser(userDataInsert, foto);
-
-  console.log({ userDataInsert });
-  return NextResponse.json(userDataInsert);
+  const userSaved = await userDto.createNewUser(userDataInsert, foto);
+  return userSaved;
 }

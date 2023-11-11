@@ -1,0 +1,16 @@
+.header {
+  margin: 30px auto 20px auto;
+  margin-bottom: 30px;
+  width: 90%;
+
+  &_title {
+    width: 95%;
+    text-align: center;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    font-size: 45px;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.8px #000;
+    margin: 10px auto;
+    max-width: 200px;
+  }
+}

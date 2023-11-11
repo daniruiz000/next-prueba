@@ -7,7 +7,7 @@ const ConditionsLink = ({ onClick }) => {
   return (
     <div>
       <a href='#' onClick={handleLinkClick}>
-        Conditions de uso
+        Condiciones de uso
       </a>
     </div>
   );

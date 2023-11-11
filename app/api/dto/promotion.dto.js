@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 const authEmail = process.env.NEXT_AUTH_EMAIL;
 const authPassword = process.env.NEXT_AUTH_PASSWORD;
-const timezone = process.env.NEXT_TIME_ZONE; // Asegúrate de usar la variable de entorno correcta
+const timezone = process.env.NEXT_TIME_ZONE;
 const maxUsersLimit = parseInt(process.env.NEXT_PROMOTION_MAX_USERS_LIMIT) || undefined;
 const startDate = process.env.NEXT_PROMOTION_START_DATE;
 const startDateParsed = DateTime.fromFormat(startDate, 'yyyy-MM-dd HH:mm:ss', { zone: timezone }) || undefined;

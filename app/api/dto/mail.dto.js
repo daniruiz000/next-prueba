@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import moment from 'moment-timezone';
 import { NextResponse } from 'next/server';
-// import { CustomError } from '../../server/checkErrorRequest.middleware';
+
 import { excelDto } from './excel.dto';
 
 const emailService = process.env.EMAIL_SERVICE;

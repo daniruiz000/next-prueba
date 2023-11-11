@@ -2,8 +2,7 @@ import { DateTime } from 'luxon';
 import dotenv from 'dotenv';
 
 dotenv.config();
-console.log('NEXT_PROMOTION_START_DATE:', process.env.NEXT_PROMOTION_START_DATE);
-console.log('NEXT_PROMOTION_FINISH_DATE:', process.env.NEXT_PROMOTION_FINISH_DATE);
+
 const timezone = process.env.NEXT_TIME_ZONE;
 const maxUsersLimit =
   process.env.NEXT_PROMOTION_MAX_USERS_LIMIT !== undefined ? parseInt(process.env.NEXT_PROMOTION_MAX_USERS_LIMIT) : undefined;

@@ -1,9 +1,13 @@
+#root,
+#__next {
+  isolation: isolate;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  position: relative;
   -webkit-font-smoothing: antialiased;
   font-family: 'Grinched', sans-serif;
   margin: 0;
@@ -47,7 +51,35 @@ h6 {
   padding: 0;
 }
 
-#root,
-#__next {
-  isolation: isolate;
+button {
+  width: 170px;
+  font-size: 22px;
+  color: $yellow;
+  border-radius: 50px;
+  border: 1px solid #e25113;
+  background: $orange;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+  padding: 7px 15px;
+  margin: 10px;
+  text-align: center;
+  &:hover {
+    background: #e25113;
+    animation: tremble 1s ease-in-out;
+  }
+}
+
+@keyframes tremble {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(0.9) rotate(5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-5deg);
+  }
 }

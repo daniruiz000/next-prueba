@@ -1,27 +1,27 @@
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
-const JWT_SECRET: string = process.env.JWT_SECRET as string;
+const JWT_SECRET = process.env.JWT_SECRET;
 
-export const generateToken = (email: string, password: string): string => {
+export const generateToken = (email, password) => {
   if (!email || !password) {
-    throw new Error("Email or password missing");
+    throw new Error('Email or password missing');
   }
 
   const payload = {
     email,
-    password,
+    password
   };
 
-  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1d" });
+  const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
   return token;
 };
 
-export const verifyToken = (token: string): any => {
+export const verifyToken = (token) => {
   if (!token) {
-    throw new Error("Token is missing");
+    throw new Error('Token is missing');
   }
   const result = jwt.verify(token, JWT_SECRET);
   return result;
