@@ -1,9 +1,10 @@
-import Calabaza from '../assets/img/calabaza-smile.svg';
+import Calabaza from '@/public/img/calabaza-smile.svg';
+import Image from 'next/image';
 
 const Loading = () => {
   return (
     <div className='calabaza-container'>
-      <img className='calabaza-spinner' src={Calabaza} alt='Calabaza' />
+      <Image className='calabaza-spinner' src={Calabaza} alt='Calabaza' />
     </div>
   );
 };

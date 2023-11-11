@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-
-import Calabaza from '../../assets/img/calabaza-smile.svg';
+import Calabaza from '@/public/img/calabaza-smile.svg';
+import Image from 'next/image';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const NotFound = () => {
     <div className='notice'>
       <div className='notice_header'>
         <h2 className='notice_title'> 404 Pagina no encontrada</h2>
-        <img className='container-down_calabaza' src={Calabaza} onClick={handleClick} />
+        <Image className='container-down_calabaza' alt='calabaza' src={Calabaza} onClick={handleClick} />
       </div>
     </div>
   );
