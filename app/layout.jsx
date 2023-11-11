@@ -17,7 +17,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang='es'>
       <body className={`${styles} ${myFont.className}`}>
-        <Image className='bg-img' alt='fondo' src={fondo} priority fill />
+        <Image className='bg-img' alt='fondo' src={fondo} fill priority />
         {children}
       </body>
     </html>
