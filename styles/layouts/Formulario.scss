@@ -67,32 +67,20 @@
 
   button[type='submit'] {
     cursor: pointer;
-    width: 100%;
-    max-width: 150px;
-    padding: 10px 15px;
+    width: 150px;
     background-color: #004690;
     border-radius: 10px;
-    border: none;
-    transition: background-color 0.3s;
-    margin-bottom: 30px;
-    text-align: center;
+    border: #032243;
     font-size: 35px;
-    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
+
     &:hover {
       background-color: #032243;
-      animation: tremble 1s ease-in-out;
     }
   }
 
   button[name='file'] {
     width: 100px;
     font-size: 18px;
-    background-color: $orange;
     border-radius: 10px;
-    margin: 10px auto;
-    text-align: center;
-    &:hover {
-      background-color: #e25113;
-    }
   }
 }

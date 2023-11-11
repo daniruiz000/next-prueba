@@ -5,63 +5,45 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   height: 100vh;
-}
-
-.container {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
   max-width: 450px;
+  margin: 0 auto;
 
   h2 {
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
     font-size: 30px;
     -webkit-text-stroke: 0.1px #000;
   }
-
-  &_up {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 90%;
-  }
-
-  &_texto-no-dejes {
-    width: 90%;
-    max-width: 109px;
-  }
-
-  &_texto-manda-selfi {
-    width: 90%;
-    margin: 20px 0 10px 0;
-    max-width: 260px;
-  }
-
-  &_murcielagos {
-    width: 90px;
-    height: 90px;
-    margin: 10px;
-  }
 }
 
-.container-down {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 90%;
-  margin: 10px auto;
-  margin-bottom: 20px;
-  max-width: 260px;
+.container {
+  &_container-up {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 300px;
+  }
 
+  &_container-down {
+    text-align: start;
+    width: 300px;
+  }
+
+  &_container-button {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 300px;
+  }
+  &_murcielagos {
+    width: 100px;
+    height: 100px;
+  }
   &_calabaza {
-    width: 90px;
-    height: 90px;
-    margin: 10px;
+    width: 100px;
+    height: 100px;
   }
 }
