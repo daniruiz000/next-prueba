@@ -69,11 +69,12 @@
     width: 150px;
     background-color: $blue-ligth;
     border-radius: 10px;
-    border: $blue;
+    border-color: $blue-dark;
     font-size: 35px;
 
     &:hover {
       background-color: $blue;
+      border-color: $blue-dark;
     }
   }
 
