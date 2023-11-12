@@ -1,5 +1,4 @@
-#root,
-#__next {
+#root {
   isolation: isolate;
 }
 
@@ -14,7 +13,6 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  position: absolute;
 }
 
 .bg-img {
@@ -56,14 +54,14 @@ button {
   font-size: 22px;
   color: $yellow;
   border-radius: 50px;
-  border: 1px solid #e25113;
+  border: 1px solid $orange;
   background: $orange;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
   padding: 10px 15px;
   margin: 10px auto;
   text-align: center;
   &:hover {
-    background: #e25113;
+    background: $orange;
     animation: tremble 1s ease-in-out;
     transition: background-color 0.3s;
   }
