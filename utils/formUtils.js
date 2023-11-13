@@ -34,7 +34,7 @@ export const insertDataToForm = (validatedData) => {
   return formData;
 };
 
-export const addUserToDataBaseAndNavigateToCorrectPage = async (formData, router, showAlert) => {
+export const fetchAddUserToDataBaseAndNavigateToCorrectPage = async (formData, router, showAlert) => {
   const API_URL = process.env.NEXT_API_URL;
 
   try {
@@ -44,7 +44,7 @@ export const addUserToDataBaseAndNavigateToCorrectPage = async (formData, router
     });
 
     if (response.ok) {
-      navigate('/correct');
+      router.push('/correct');
     } else {
       const errorText = await response.text();
       const errorTextParsed = errorText.replace('"error":"', '').replace('"', '');

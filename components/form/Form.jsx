@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { insertDataToForm, addUserToDataBaseAndNavigateToCorrectPage, createInitialInsertData } from '@/utils/formUtils';
+import { insertDataToForm, fetchAddUserToDataBaseAndNavigateToCorrectPage, createInitialInsertData } from '@/utils/formUtils';
 import { checkDataInsertIsCompleteAndCorrect } from '@/utils/dataUtils';
 
 import FormContent from './FormContent';
@@ -64,7 +64,7 @@ const Form = () => {
         return;
       }
       const userFormData = insertDataToForm(dataChecked);
-      await addUserToDataBaseAndNavigateToCorrectPage(userFormData, router, setShowNotice);
+      await fetchAddUserToDataBaseAndNavigateToCorrectPage(userFormData, router, setShowNotice);
     }
   };
 

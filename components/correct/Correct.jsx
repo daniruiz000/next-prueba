@@ -7,7 +7,7 @@ const Correct = () => {
       <div className='notice_header'>
         <h2 className='notice_title'> Usuario registrado!</h2>
         <h2 className='notice_title'> Muchas gracias!!!</h2>
-        <Image alt='calabaza' className='container-down_calabaza' src={Calabaza} />
+        <Image alt='calabaza' className='container_calabaza' src={Calabaza} />
       </div>
     </div>
   );
